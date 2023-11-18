@@ -57,7 +57,7 @@ export default function App() {
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_WALLETCONNECT_ID}`,
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTIFY_API_SECRET}`,
           },
           body: JSON.stringify({
             notification: {
