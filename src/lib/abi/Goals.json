@@ -1,0 +1,455 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract IERC20",
+        "name": "_stakingToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_granularity",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      }
+    ],
+    "name": "GroupCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "eligible",
+        "type": "address[]"
+      }
+    ],
+    "name": "GroupDistributed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      }
+    ],
+    "name": "GroupJoined",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
+      }
+    ],
+    "name": "GroupStarted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "proof",
+        "type": "string"
+      }
+    ],
+    "name": "ProofSubmitted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      }
+    ],
+    "name": "VoteSubmitted",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_durationDays",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "createGroup",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      }
+    ],
+    "name": "distribute",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      }
+    ],
+    "name": "getGroupOwner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getMemberOfGroupByIndex",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "source",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "goalTitle",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "goalDescription",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "stake",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Goals.Stake",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      }
+    ],
+    "name": "getMembers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "source",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "goalTitle",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "goalDescription",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "stake",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Goals.Stake[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      }
+    ],
+    "name": "getProofs",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "source",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "proof",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct Goals.Proof[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      }
+    ],
+    "name": "groupExists",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "groups",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "groupName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "durationDays",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isValue",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalStake",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "baseAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "groupOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "int96",
+        "name": "numberMembers",
+        "type": "int96"
+      },
+      {
+        "internalType": "int96",
+        "name": "numberVotes",
+        "type": "int96"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_goalTitle",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_goalDescription",
+        "type": "string"
+      }
+    ],
+    "name": "joinGroup",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      }
+    ],
+    "name": "start",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_proof",
+        "type": "string"
+      }
+    ],
+    "name": "submitProof",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_groupName",
+        "type": "string"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_vetoAddresses",
+        "type": "address[]"
+      }
+    ],
+    "name": "submitVetos",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
