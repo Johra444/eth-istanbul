@@ -15,7 +15,7 @@ export default function App() {
   // Initialize the Web3Inbox SDK
   const isReady = useInitWeb3InboxClient({
     projectId: "10acc3228ec51cb3448e634d4f060d74",
-    domain: "https://eth-istanbul-p76r-git-main-johra444.vercel.app/",
+    domain: "https://eth-istanbul-p76r.vercel.app/",
     isLimited: false,
   });
 
